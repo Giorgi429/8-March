@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>თაკო, გილოცავ!</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #fff5f8 0%, #ffd1dc 100%);
+        font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 3rem;
+        border-radius: 30px;
+        box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15);
+        z-index: 10;
+        max-width: 450px;
+        border: 1px solid #f8bbd0;
+        position: relative;
+      }
+
+      h1 {
+        color: #c2185b;
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      .name {
+        color: #d81b60;
+        display: block;
+        font-size: 3.2rem;
+        margin-top: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      p {
+        color: #4a148c;
+        font-size: 1.3rem;
+        line-height: 1.7;
+        margin-top: 20px;
+      }
+
+      .heart-icon {
+        font-size: 40px;
+        color: #e91e63;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .particle {
+        position: absolute;
+        top: -10%;
+        user-select: none;
+        pointer-events: none;
+        animation: fall linear forwards;
+        z-index: 1;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh) rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="heart-icon">❤️</div>
+      <h1>გილოცავ 8 მარტს,</h1>
+      <span class="name">  ✨</span>
+      <p>
+        შენ ხარ ყველაზე განსაკუთრებული ადამიანი. <br />
+        გისურვებ ყოველდღიურ ბედნიერებას, <br />
+        სიმშვიდეს და უამრავ მიზეზს ღიმილისთვის.
+      </p>
+    </div>
+
+    <script>
+      function createParticle() {
+        const particles = ["💖", "🌸", "✨", "🌹", "💗"];
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        particle.innerText =
+          particles[Math.floor(Math.random() * particles.length)];
+
+        particle.style.left = Math.random() * 100 + "vw";
+        particle.style.animationDuration = Math.random() * 3 + 3 + "s";
+        particle.style.fontSize = Math.random() * 25 + 15 + "px";
+        particle.style.opacity = Math.random() * 0.8 + 0.2;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 6000);
+      }
+
+      setInterval(createParticle, 200);
+    </script>
+  </body>
+</html>
